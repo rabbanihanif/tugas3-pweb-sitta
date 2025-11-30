@@ -38,9 +38,9 @@ Aplikasi dibangun menggunakan **Vue.js** dengan struktur **komponen + template**
 - Riwayat perjalanan (timeline)  
 - Tambah DO baru  
 ---
-## Teknologi stack
-Vue.js 3 CDN Framework utama (tanpa bundler)
-TailwindCSS + DaisyUI UI styling 
-JSON File Dummy data / data source
-Vanilla JavaScript Event & state handling 
-HTML Template Komponen terpisah 
+## Tech stack
+- Vue.js 3 CDN Framework utama (tanpa bundler)
+- TailwindCSS + DaisyUI UI styling 
+- JSON File Dummy data / data source
+- JavaScript Event & state handling 
+- HTML Template Komponen terpisah 
