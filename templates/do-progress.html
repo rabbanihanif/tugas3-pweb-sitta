@@ -1,0 +1,18 @@
+<div class="modal modal-open">
+  <div class="modal-box">
+
+    <h3 class="font-bold text-lg mb-4">Tambah Progress Pengiriman</h3>
+
+    <form @submit.prevent="submitProgress">
+
+      <input class="input input-bordered w-full" placeholder="Keterangan" v-model="keterangan" required />
+
+      <div class="modal-action">
+        <button class="btn" type="button" @click="$emit('close')">Batal</button>
+        <button class="btn btn-primary" type="submit">Tambah</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

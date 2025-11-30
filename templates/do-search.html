@@ -1,0 +1,41 @@
+<div class="max-w-3xl mx-auto">
+
+  <h2 class="text-xl font-bold mb-4">Tracking Delivery Order</h2>
+
+  <div class="flex gap-2 mb-4">
+    <input 
+      class="input input-bordered w-full focus:ring-primary"
+      placeholder="Cari Nomor DO atau NIM"
+      v-model="searchText"
+      @keyup.enter="performSearch"
+      @keyup.esc="resetSearch"
+    />
+
+    <button class="btn btn-primary text-white" @click="performSearch">Cari</button>
+    <button class="btn btn-secondary text-white" @click="openAddForm">+ Tambah DO</button>
+  </div>
+
+  <!-- HASIL -->
+  <ba-do-result
+    v-if="result"
+    :kode="result.kode"
+    :data="result.data"
+    @addProgress="openProgressForm"
+  ></ba-do-result>
+
+  <!-- FORM TAMBAH DO -->
+  <ba-do-form
+    v-if="showForm"
+    @close="showForm=false"
+    @saved="reloadTracking"
+  ></ba-do-form>
+
+  <!-- FORM TAMBAH PROGRESS -->
+  <ba-do-progress
+    v-if="showProgressForm"
+    :kode="selectedKode"
+    @close="showProgressForm=false"
+    @saved="reloadTracking"
+  ></ba-do-progress>
+
+</div>

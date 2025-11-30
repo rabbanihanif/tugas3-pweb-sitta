@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tugas 3 – Bahan Ajar UT</title>
+
+  <!-- DaisyUI + Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Vue JS -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body class="bg-base-200" data-theme="utTheme">
+
+  <!-- ROOT APP (Vue mengontrol HANYA area ini) -->
+  <div id="app" class="min-h-screen">
+
+    <!-- NAVBAR -->
+    <div class="navbar bg-base-100 shadow">
+      <div class="flex-1">
+        <a class="btn btn-ghost text-xl">Bahan Ajar UT</a>
+      </div>
+
+      <div class="flex-none gap-2">
+        <button 
+          class="btn btn-sm"
+          :class="page === 'dashboard' ? 'btn-primary' : ''"
+          @click="page = 'dashboard'">
+          Dashboard
+        </button>
+
+        <button 
+          class="btn btn-sm"
+          :class="page === 'stok' ? 'btn-primary' : ''"
+          @click="page = 'stok'">
+          Stok Bahan Ajar
+        </button>
+
+        <button 
+          class="btn btn-sm"
+          :class="page === 'tracking' ? 'btn-primary' : ''"
+          @click="page = 'tracking'">
+          Tracking DO
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="p-4">
+
+      <!-- DASHBOARD -->
+      <section v-if="page === 'dashboard'">
+        <h2 class="text-xl font-bold mb-3">Selamat Datang</h2>
+        <p class="text-gray-600">
+          Silakan pilih menu untuk mengelola stok bahan ajar atau melakukan tracking DO.
+        </p>
+      </section>
+
+      <!-- STOK -->
+      <section v-if="page === 'stok'">
+        <ba-stock-table></ba-stock-table>
+      </section>
+
+      <!-- TRACKING -->
+      <section v-if="page === 'tracking'">
+        <ba-do-search></ba-do-search>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- LOAD COMPONENTS -->
+  <script type="module" src="./js/app.js"></script>
+
+</body>
+</html>

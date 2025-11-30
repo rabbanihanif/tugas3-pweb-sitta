@@ -1,0 +1,72 @@
+<div class="modal modal-open bg-black bg-opacity-40">
+  <div class="modal-box w-11/12 max-w-3xl">
+
+    <h3 class="font-bold text-lg mb-4">
+      {{ editData ? "Edit Stok" : "Tambah Stok" }}
+    </h3>
+
+    <div class="grid grid-cols-2 gap-4">
+
+      <!-- KODE -->
+      <input class="input input-bordered w-full" placeholder="Kode MK" v-model="form.kode">
+
+      <!-- JUDUL -->
+      <input class="input input-bordered w-full" placeholder="Judul" v-model="form.judul">
+
+      <!-- KATEGORI -->
+      <select class="select select-bordered w-full" v-model="form.kategori">
+        <option disabled value="">Pilih Kategori</option>
+        <option v-for="k in data.kategoriList" :key="k">{{ k }}</option>
+      </select>
+
+      <!-- UPBJJ -->
+      <select class="select select-bordered w-full" v-model="form.upbjj">
+        <option disabled value="">Pilih UPBJJ</option>
+        <option v-for="u in data.upbjjList" :key="u">{{ u }}</option>
+      </select>
+
+      <!-- RAK -->
+      <input class="input input-bordered w-full" placeholder="Lokasi Rak" v-model="form.lokasiRak">
+
+      <!-- PENGIRIMAN -->
+      <select class="select select-bordered w-full" v-model="form.pengiriman">
+        <option disabled value="">Pilih Jenis Pengiriman</option>
+        <option v-for="p in data.pengirimanList" :key="p.kode" :value="p.kode">
+          {{ p.nama }}
+        </option>
+      </select>
+
+      <!-- PAKET UT -->
+      <select class="select select-bordered w-full" v-model="form.paket" @change="updateHarga">
+        <option disabled value="">Pilih Paket UT</option>
+        <option v-for="p in data.paket" :key="p.kode" :value="p.kode">
+          {{ p.nama }} — Rp{{ p.harga.toLocaleString("id-ID") }}
+        </option>
+      </select>
+
+      <!-- HARGA AUTO (READONLY) -->
+      <input class="input input-bordered w-full bg-gray-100"
+             placeholder="Harga (otomatis dari paket)"
+             readonly
+             v-model="form.harga">
+
+      <!-- QTY -->
+      <input class="input input-bordered w-full" type="number" placeholder="Qty" v-model.number="form.qty">
+
+      <!-- SAFETY -->
+      <input class="input input-bordered w-full" type="number" placeholder="Safety" v-model.number="form.safety">
+
+      <!-- CATATAN -->
+      <textarea class="textarea textarea-bordered col-span-2 h-24"
+                placeholder="Catatan tambahan"
+                v-model="form.catatan"></textarea>
+
+    </div>
+
+    <div class="modal-action">
+      <button class="btn" @click="$emit('close')">Batal</button>
+      <button class="btn btn-primary" @click="submitForm">Simpan</button>
+    </div>
+
+  </div>
+</div>

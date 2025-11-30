@@ -1,0 +1,22 @@
+<div class="p-4 border rounded bg-base-100 mt-4">
+
+  <h3 class="font-bold text-lg mb-3">Hasil Tracking</h3>
+
+  <p><strong>No DO:</strong> {{ kode }}</p>
+  <p><strong>Nama:</strong> {{ data.nama }}</p>
+  <p><strong>NIM:</strong> {{ data.nim }}</p>
+  <p><strong>Ekspedisi:</strong> {{ data.ekspedisi }}</p>
+  <p><strong>Paket:</strong> {{ data.paket }}</p>
+
+  <h4 class="font-semibold mt-4">Riwayat Perjalanan</h4>
+  <ul class="border p-3 rounded">
+    <li v-for="p in data.perjalanan">
+      <strong>{{ p.waktu }}:</strong> {{ p.keterangan }}
+    </li>
+  </ul>
+
+  <button class="btn btn-primary btn-sm mt-3" @click="$emit('addProgress', kode)">
+    + Tambah Progress
+  </button>
+
+</div>

@@ -1,0 +1,8 @@
+<span class="badge px-3 py-2 text-sm text-white"
+  :class="{
+    'bg-success': qty >= safety,
+    'bg-warning text-black': qty < safety && qty > 0,
+    'bg-error': qty === 0
+  }">
+  {{ statusLabel }}
+</span>
